@@ -18,4 +18,8 @@ export class BooksFacade {
   upsertBook(book: BooksEntity) {
     this.store.dispatch(BooksActions.updsertItem({ item: book }));
   }
+
+  loadBooks() {
+    this.store.dispatch(BooksActions.loadBooks());
+  }
 }

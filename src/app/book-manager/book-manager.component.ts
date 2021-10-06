@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BooksFacade } from '../+state/books.facade';
@@ -10,7 +10,7 @@ import { BooksEntity } from '../+state/books.models';
   styleUrls: ['./book-manager.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookManagerComponent {
+export class BookManagerComponent implements OnInit {
   private localState$ = new BehaviorSubject({
     showForm: false,
     selectedTab: 0,
@@ -21,6 +21,10 @@ export class BookManagerComponent {
   );
 
   constructor(private books: BooksFacade) {}
+
+  ngOnInit() {
+    this.books.loadBooks();
+  }
 
   showFormToggle() {
     this.localState$.next({
