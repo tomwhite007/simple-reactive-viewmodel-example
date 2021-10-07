@@ -16,8 +16,6 @@ import { BooksEntity } from '../../+state/books.models';
 export class BookListComponent {
   @Input() books?: BooksEntity[];
 
-  @Output() selectBook = new EventEmitter<string>();
-
   trackByFn(index: number, item: BooksEntity) {
     return item.id;
   }
