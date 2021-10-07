@@ -12,7 +12,7 @@ export class BookManagerStateService {
   });
 
   vm$ = combineLatest([this.books.allBooks$, this.localState$]).pipe(
-    map(([allbooks, localState]) => ({ allbooks, ...localState }))
+    map(([allBooks, localState]) => ({ allBooks, ...localState }))
   );
 
   constructor(private books: BooksFacade) {}
@@ -21,14 +21,14 @@ export class BookManagerStateService {
     this.books.loadBooks();
   }
 
-  showFormToggle() {
+  toggleShowForm() {
     this.localState$.next({
       ...this.localState$.value,
       showForm: !this.localState$.value.showForm,
     });
   }
 
-  selectTab(tabNo: number) {
+  setSelectedTab(tabNo: number) {
     this.localState$.next({
       ...this.localState$.value,
       selectedTab: tabNo,

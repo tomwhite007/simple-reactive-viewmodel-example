@@ -1,20 +1,13 @@
 <header class="flex">
-  <h1>Books App</h1>
+  <h1>Book Mangager</h1>
 </header>
 
 <main *ngIf="vm$ | async as vm">
   <section class="mt-5 mb-5">
-    <div class="form-group">
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="showForm"
-          (change)="showFormToggle()"
-        />
-        <label class="form-check-label" for="showForm">Add more books</label>
-      </div>
-    </div>
+    <app-show-form-checkbox
+      [checked]="vm.showForm"
+      (changed)="toggleShowForm()"
+    ></app-show-form-checkbox>
 
     <app-add-book-form
       *ngIf="vm.showForm"
@@ -22,30 +15,17 @@
     ></app-add-book-form>
   </section>
 
-  <nav>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          (click)="selectTab(0)"
-          [class.active]="vm.selectedTab === 0"
-          >Book List</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          (click)="selectTab(1)"
-          [class.active]="vm.selectedTab === 1"
-          >Other Book Stuff</a
-        >
-      </li>
-    </ul>
-  </nav>
-
-  <section [ngSwitch]="vm.selectedTab">
-    <app-book-list *ngSwitchCase="0" [books]="vm.allbooks"></app-book-list>
+  <app-tabs
+    [selectedTab]="vm.selectedTab"
+    (tabSelected)="selectTab($event)"
+    [ngSwitch]="vm.selectedTab"
+  >
+    <app-book-list
+      *ngSwitchCase="0"
+      [books]="vm.allBooks"
+      (selectBook)="selectBook($event)"
+    ></app-book-list>
 
     <app-book-stuff *ngSwitchCase="1"></app-book-stuff>
-  </section>
+  </app-tabs>
 </main>

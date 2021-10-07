@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BooksEntity } from '../+state/books.models';
 import { BookManagerStateService } from './book-manager-state.service';
 
@@ -6,7 +6,6 @@ import { BookManagerStateService } from './book-manager-state.service';
   selector: 'app-book-manager',
   templateUrl: './book-manager.component.html',
   styleUrls: ['./book-manager.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [BookManagerStateService],
 })
 export class BookManagerComponent implements OnInit {
@@ -18,15 +17,19 @@ export class BookManagerComponent implements OnInit {
     this.state.loadBooks();
   }
 
-  showFormToggle() {
-    this.state.showFormToggle();
+  toggleShowForm() {
+    this.state.toggleShowForm();
   }
 
   selectTab(tabNo: number) {
-    this.state.selectTab(tabNo);
+    this.state.setSelectedTab(tabNo);
   }
 
   upsertBook(book: BooksEntity) {
     this.state.upsertBook(book);
+  }
+
+  selectBook(id: string) {
+    // this.state.selectBook(id);
   }
 }

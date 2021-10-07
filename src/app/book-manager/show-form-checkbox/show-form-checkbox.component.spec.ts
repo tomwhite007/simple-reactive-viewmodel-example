@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookListComponent } from './book-list.component';
+import { ShowFormCheckboxComponent } from './show-form-checkbox.component';
 
-describe('BookListComponent', () => {
-  let component: BookListComponent;
-  let fixture: ComponentFixture<BookListComponent>;
+describe('ShowFormCheckboxComponent', () => {
+  let component: ShowFormCheckboxComponent;
+  let fixture: ComponentFixture<ShowFormCheckboxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BookListComponent],
+      declarations: [ShowFormCheckboxComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookListComponent);
+    fixture = TestBed.createComponent(ShowFormCheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

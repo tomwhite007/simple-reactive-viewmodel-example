@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { BooksEntity } from '../../+state/books.models';
 
 @Component({
@@ -8,5 +14,11 @@ import { BooksEntity } from '../../+state/books.models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListComponent {
-  @Input() books: BooksEntity[] = [];
+  @Input() books?: BooksEntity[];
+
+  @Output() selectBook = new EventEmitter<string>();
+
+  trackByFn(index: number, item: BooksEntity) {
+    return item.id;
+  }
 }

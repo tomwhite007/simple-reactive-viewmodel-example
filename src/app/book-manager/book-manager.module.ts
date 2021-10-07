@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { BookManagerRoutingModule } from './book-manager-routing.module';
 import { BookManagerComponent } from './book-manager.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BooksFacade } from '../+state/books.facade';
 import { AddBookFormComponent } from './add-book-form/add-book-form.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookStuffComponent } from './book-stuff/book-stuff.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowFormCheckboxComponent } from './show-form-checkbox/show-form-checkbox.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { BookManagerRoutingModule } from './book-manager-routing.module';
 
 @NgModule({
   declarations: [
     BookManagerComponent,
-    AddBookFormComponent,
     BookListComponent,
+    AddBookFormComponent,
     BookStuffComponent,
+    ShowFormCheckboxComponent,
+    TabsComponent,
   ],
   imports: [
     CommonModule,
