@@ -1,11 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import { BooksEntity } from '../../+state/books.models';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BooksEntity } from '../../../+state/books.models';
 
 @Component({
   selector: 'app-book-list',

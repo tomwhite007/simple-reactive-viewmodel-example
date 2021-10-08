@@ -10,6 +10,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'books-imperative',
+    loadChildren: () =>
+      import('./book-manager-imperative/book-manager-imperative.module').then(
+        (m) => m.BookManagerImperativeModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'books',
     pathMatch: 'full',
