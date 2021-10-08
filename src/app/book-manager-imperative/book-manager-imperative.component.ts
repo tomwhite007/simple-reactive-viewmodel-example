@@ -9,17 +9,12 @@ import { BookManagerImperativeStateService } from './book-manager-imperative-sta
   styleUrls: ['./book-manager-imperative.component.scss'],
   providers: [BookManagerImperativeStateService],
 })
-export class BookManagerImperativeComponent implements OnInit, OnDestroy {
+export class BookManagerImperativeComponent implements OnInit {
   vm = this.state.vm;
-  booksSubscription!: Subscription;
 
   constructor(private state: BookManagerImperativeStateService) {}
 
   ngOnInit() {
-    this.booksSubscription = this.state.books$.subscribe((res) =>
-      this.state.updateVmFromBooks(res)
-    );
-
     this.state.loadBooks();
   }
 
@@ -33,9 +28,5 @@ export class BookManagerImperativeComponent implements OnInit, OnDestroy {
 
   upsertBook(book: BooksEntity) {
     this.state.upsertBook(book);
-  }
-
-  ngOnDestroy() {
-    this.booksSubscription.unsubscribe();
   }
 }
