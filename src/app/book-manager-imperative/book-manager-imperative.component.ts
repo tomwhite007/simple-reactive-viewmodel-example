@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { BooksEntity } from '../+state/books.models';
 import { BookManagerImperativeStateService } from './book-manager-imperative-state.service';
 
